@@ -1,7 +1,7 @@
-package com.github.repository.reader.reporeader.RepoReader.Controller;
+package com.github.repository.reader.reporeader.Github;
 
-import com.github.repository.reader.reporeader.RepoReader.Model.Response.RepositoryRest;
-import com.github.repository.reader.reporeader.RepoReader.Service.RepoReaderService;
+import com.github.repository.reader.reporeader.Github.Api.GithubFacade;
+import com.github.repository.reader.reporeader.Github.Api.Model.RepositoryRest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,11 +13,11 @@ import java.util.List;
 @RequestMapping(path="repository")
 @RestController
 @RequiredArgsConstructor
-public class RepoReaderController {
-    private final RepoReaderService repoReaderService;
+class RepositoryReaderController {
+    private final GithubFacade githubFacade;
 
     @GetMapping(path = "/username/{username}")
     public List<RepositoryRest> getUserRepositories(@PathVariable String username) {
-        return repoReaderService.getUserRepositories(username);
+        return githubFacade.getUserRepositories(username);
     }
 }

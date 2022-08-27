@@ -1,4 +1,4 @@
-package com.github.repository.reader.reporeader.RepoReader.Model.Response;
+package com.github.repository.reader.reporeader.Github.Api.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

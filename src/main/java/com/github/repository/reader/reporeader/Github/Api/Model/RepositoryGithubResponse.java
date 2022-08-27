@@ -1,13 +1,15 @@
-package com.github.repository.reader.reporeader.Feign.Model.Response.Branch;
+package com.github.repository.reader.reporeader.Github.Api.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BranchGithubResponse {
+public class RepositoryGithubResponse {
     private String name;
-    private Commit commit;
+    private RepositoryOwner owner;
+
 }
