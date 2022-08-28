@@ -8,7 +8,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-class GithubFacadeImpl implements GithubFacade {
+public class GithubFacadeImpl implements GithubFacade {
     private final GithubService githubService;
 
     @Override

@@ -9,10 +9,10 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class UnsupportedMediaTypeControllerAdvice extends ResponseEntityExceptionHandler {
+public class UnsupportedAcceptTypeControllerAdvice extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        return new ResponseEntity(new ApiError("406 Not Acceptable", "Unsupported Media Type!"), HttpStatus.NOT_ACCEPTABLE);
+        return new ResponseEntity(new ApiError("406 Not Acceptable", "Unsupported Accept type!"), HttpStatus.NOT_ACCEPTABLE);
     }
 }

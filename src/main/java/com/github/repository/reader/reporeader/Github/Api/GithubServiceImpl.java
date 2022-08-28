@@ -7,6 +7,7 @@ import com.github.repository.reader.reporeader.Github.Api.Model.RepositoryRest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -19,10 +20,12 @@ class GithubServiceImpl implements GithubService {
     @Override
     public List<RepositoryRest> getUserRepositories(String username) {
         List<RepositoryGithubResponse> githubRepositoryResponse = this.getGithubRepositories(username);
-
-        return githubRepositoryResponse.stream()
+        List<RepositoryRest> githubRepositoriesList = new ArrayList<>();
+        githubRepositoriesList = githubRepositoryResponse.stream()
+                .filter(repo -> repo.isFork() == false)
                 .map(repo -> new RepositoryRest(repo.getOwner().getLogin(), repo.getName(), this.getRepositoryBranches(username, repo.getName())))
                 .collect(Collectors.toList());
+        return githubRepositoriesList;
     }
 
     private List<RepositoryGithubResponse> getGithubRepositories(String username) {
