@@ -1,6 +1,7 @@
 package com.github.repository.reader.reporeader.Github.Api;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -12,7 +13,4 @@ interface GithubFeignClient {
 
     @GetMapping("/repos/{username}/{projectName}/branches")
     String getBranchList(@PathVariable("username") String username, @PathVariable("projectName") String projectName);
-
-    @GetMapping("/users/{username}")
-    String getUser(@PathVariable("username") String username);
 }
