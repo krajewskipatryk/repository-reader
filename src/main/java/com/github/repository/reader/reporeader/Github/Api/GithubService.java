@@ -4,6 +4,6 @@ import com.github.repository.reader.reporeader.Github.Api.Model.RepositoryRest;
 
 import java.util.List;
 
-interface GithubService {
+public interface GithubService {
     List<RepositoryRest> getUserRepositories(String username);
 }

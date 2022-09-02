@@ -1,7 +1,6 @@
 package com.github.repository.reader.reporeader.Github;
 
-import com.github.repository.reader.reporeader.Github.Api.GithubFacade;
-import com.github.repository.reader.reporeader.Github.Api.Model.GithubLoginRequestModel;
+import com.github.repository.reader.reporeader.Github.Api.GithubService;
 import com.github.repository.reader.reporeader.Github.Api.Model.RepositoryRest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -13,10 +12,10 @@ import java.util.List;
 @RestController
 @RequestMapping(path="github")
 class GithubController {
-    private final GithubFacade githubFacade;
+    private final GithubService githubService;
 
-    @GetMapping(path = "/repos", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public List<RepositoryRest> getUserRepositories(@RequestBody GithubLoginRequestModel githubLoginRequestModel) {
-        return githubFacade.getUserRepositories(githubLoginRequestModel.getUsername());
+    @GetMapping(path = "/user/{username}/repos", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public List<RepositoryRest> getUserRepositories(@PathVariable String username) {
+        return githubService.getUserRepositories(username);
     }
 }

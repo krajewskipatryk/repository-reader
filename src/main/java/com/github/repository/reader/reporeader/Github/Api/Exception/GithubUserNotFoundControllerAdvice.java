@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GithubUserNotFoundControllerAdvice {
     @ExceptionHandler(FeignException.class)
     public ResponseEntity<ApiError> handleUserNotFoundFeign() {
-        ResponseEntity<ApiError> responseEntity = new ResponseEntity<>(new ApiError("404 Not Found", "Github user not found!"), HttpStatus.NOT_FOUND);
+        ResponseEntity<ApiError> responseEntity = new ResponseEntity<>(new ApiError("404", "Url not found!"), HttpStatus.NOT_FOUND);
 
         return responseEntity;
     }
